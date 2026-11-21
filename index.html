@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Create a professional CV with live preview and PDF export.">
+  <title>FormaCV — Resume Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/templates.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="FormaCV home">
+        <span class="brand-mark">f</span><span>forma<span class="brand-light">cv</span></span>
+      </a>
+      <div class="topbar-center"><span class="save-indicator"><i></i><span id="saveStatus">Saved locally</span></span></div>
+      <div class="topbar-actions">
+        <button class="btn btn-quiet" id="resetBtn" type="button">Start over</button>
+        <button class="btn btn-primary" id="downloadBtn" type="button"><span>↓</span> Download PDF</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="editor-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">YOUR DOCUMENT</p><h1>Build your CV</h1><p class="muted">Start with the ready-made fields, then add your own.</p></div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-copy"><span>CV completeness</span><strong id="completionText">0%</strong></div>
+          <div class="progress-track"><span id="completionBar"></span></div>
+          <small>Complete the key sections to create a stronger CV.</small>
+        </div>
+
+        <nav class="section-nav" aria-label="CV sections">
+          <button class="section-tab active" data-target="personalSection"><span class="tab-icon">01</span> Personal</button>
+          <button class="section-tab" data-target="summarySection"><span class="tab-icon">02</span> Profile</button>
+          <button class="section-tab" data-target="experienceSection"><span class="tab-icon">03</span> Experience</button>
+          <button class="section-tab" data-target="educationSection"><span class="tab-icon">04</span> Education</button>
+          <button class="section-tab" data-target="skillsSection"><span class="tab-icon">05</span> Skills</button>
+          <button class="section-tab" data-target="projectsSection"><span class="tab-icon">06</span> Projects</button>
+          <button class="section-tab" data-target="extrasSection"><span class="tab-icon">07</span> More</button>
+        </nav>
+
+        <div class="form-sections">
+          <section class="form-section active" id="personalSection">
+            <div class="section-title"><div><span class="eyebrow">01 / INTRODUCTION</span><h2>Personal details</h2></div></div>
+            <div class="photo-row">
+              <div class="avatar-preview" id="avatarPreview">👤</div>
+              <div class="photo-actions"><strong>Profile photo</strong><p class="muted small">Optional · JPG or PNG</p><label class="upload-link" for="photoInput">Upload photo</label><input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden><button class="text-button" id="removePhotoBtn" type="button">Remove</button></div>
+            </div>
+            <div class="field-grid">
+              <label class="field full">Full name<input data-field="name" placeholder="e.g. Alex Morgan"></label>
+              <label class="field">Professional title<input data-field="title" placeholder="e.g. Product Designer"></label>
+              <label class="field">Email address<input data-field="email" type="email" placeholder="alex@email.com"></label>
+              <label class="field">Phone number<input data-field="phone" placeholder="+880 1XXXXXXXXX"></label>
+              <label class="field">Location / Address<input data-field="location" placeholder="Dhaka, Bangladesh"></label>
+              <label class="field">Date of birth<input data-field="dateOfBirth" type="date"></label>
+              <label class="field">Nationality<input data-field="nationality" placeholder="Bangladeshi"></label>
+              <label class="field">Professional website<input data-field="website" placeholder="yourportfolio.com"></label>
+              <label class="field">LinkedIn<input data-field="linkedin" placeholder="linkedin.com/in/username"></label>
+              <label class="field">GitHub<input data-field="github" placeholder="github.com/username"></label>
+              <label class="field">Other profile link<input data-field="otherLink" placeholder="https://"></label>
+            </div>
+          </section>
+
+          <section class="form-section" id="summarySection">
+            <div class="section-title"><div><span class="eyebrow">02 / ABOUT YOU</span><h2>Professional profile</h2></div></div>
+            <label class="field">Professional summary<textarea data-field="summary" rows="5" placeholder="Write 2–4 sentences about your experience, strengths and career goals..."></textarea></label>
+            <label class="field">Career objective<textarea data-field="careerObjective" rows="4" placeholder="What role are you seeking, and what do you hope to contribute?"></textarea></label>
+          </section>
+
+          <section class="form-section" id="experienceSection">
+            <div class="section-title"><div><span class="eyebrow">03 / YOUR JOURNEY</span><h2>Work experience</h2></div><button class="btn btn-small btn-outline" id="addExperienceBtn" type="button">+ Add</button></div>
+            <div id="experienceList"></div>
+          </section>
+
+          <section class="form-section" id="educationSection">
+            <div class="section-title"><div><span class="eyebrow">04 / LEARNING</span><h2>Education</h2></div><button class="btn btn-small btn-outline" id="addEducationBtn" type="button">+ Add</button></div>
+            <div id="educationList"></div>
+          </section>
+
+          <section class="form-section" id="skillsSection">
+            <div class="section-title"><div><span class="eyebrow">05 / WHAT YOU DO WELL</span><h2>Skills</h2></div></div>
+            <label class="field">Technical skills<textarea data-field="technicalSkills" rows="3" placeholder="JavaScript, Python, SQL, Figma"></textarea><small>Separate skills with commas.</small></label>
+            <label class="field">Soft skills<textarea data-field="softSkills" rows="3" placeholder="Communication, teamwork, problem solving"></textarea></label>
+            <label class="field">Other skills<textarea data-field="skills" rows="3" placeholder="Additional skills, separated by commas"></textarea></label>
+            <label class="field">Languages and proficiency<textarea data-field="languages" rows="3" placeholder="English — Fluent&#10;Bengali — Native"></textarea></label>
+          </section>
+
+          <section class="form-section" id="projectsSection">
+            <div class="section-title"><div><span class="eyebrow">06 / YOUR WORK</span><h2>Projects</h2></div><button class="btn btn-small btn-outline" id="addProjectBtn" type="button">+ Add</button></div>
+            <div id="projectList"></div>
+          </section>
+
+          <section class="form-section" id="extrasSection">
+            <div class="section-title"><div><span class="eyebrow">07 / ADDITIONAL DETAILS</span><h2>More information</h2></div></div>
+            <label class="field">Certifications<textarea data-field="certifications" rows="3" placeholder="Google UX Design Certificate — 2025"></textarea></label>
+            <label class="field">Awards & achievements<textarea data-field="awards" rows="3" placeholder="Dean's List — 2024"></textarea></label>
+            <label class="field">References<textarea data-field="references" rows="3" placeholder="Name, designation, organization, email and phone"></textarea></label>
+            <div class="custom-fields-heading"><div><span class="eyebrow">MAKE IT YOUR OWN</span><h3>Custom fields</h3><p class="muted small">Add any information that is not already listed above.</p></div><button class="btn btn-small btn-primary" id="addCustomFieldBtn" type="button">+ Add custom field</button></div>
+            <div id="customFieldsList"></div>
+          </section>
+        </div>
+      </aside>
+
+      <section class="preview-panel">
+        <div class="preview-toolbar">
+          <div><p class="eyebrow">LIVE CANVAS</p><h2>Preview your CV</h2></div>
+          <div class="preview-tools">
+            <label class="template-select-wrap"><span>Template</span><select id="templateSelect" aria-label="Choose CV template"><option value="minimal">Minimal</option><option value="modern">Modern</option><option value="corporate">Corporate</option><option value="creative">Creative</option><option value="ats">ATS Friendly</option><option value="executive">Executive</option></select></label>
+            <div class="zoom-controls"><button id="zoomOut" aria-label="Zoom out" type="button">−</button><span id="zoomValue">85%</span><button id="zoomIn" aria-label="Zoom in" type="button">+</button></div>
+          </div>
+        </div>
+        <div class="preview-stage" id="previewStage">
+          <article class="resume-page template-minimal" id="resumePage" aria-label="CV live preview">
+            <div class="resume-empty"><div class="empty-icon">✦</div><h2>Your CV starts here</h2><p>Add your name and details to see your resume take shape.</p></div>
+          </article>
+        </div>
+        <div class="preview-footnote"><span>⌁</span> Your information is saved in this browser. Nothing is uploaded.</div>
+      </section>
+    </main>
+    <div class="mobile-switcher" id="mobileSwitcher"><button class="active" data-view="editor">Edit details</button><button data-view="preview">Live preview</button></div>
+    
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button class="fab" id="fabDownload" type="button" aria-label="Download PDF">↓</button>
+  </div>
+
+  <script src="js/templates.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+.resume-page{width:794px;min-height:1123px;background:#fff;box-shadow:0 8px 35px rgba(30,34,66,.13);transform-origin:top center;color:#25283a;padding:54px 58px;font-family:"DM Sans",sans-serif;position:relative;overflow:hidden;font-size:11px;line-height:1.55}
+.resume-empty{min-height:900px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#a1a4b5}
+.empty-icon{width:55px;height:55px;border-radius:18px;background:#f0efff;color:#7169dd;display:grid;place-items:center;font-size:25px;margin-bottom:16px}
+.resume-empty h2{font:700 22px Manrope;color:#50546a;margin:0 0 7px}
+.resume-empty p{font-size:12px;margin:0}
+.resume-header{display:flex;align-items:center;gap:22px;padding-bottom:22px;border-bottom:1px solid #e7e8ed;margin-bottom:20px}
+.resume-photo{width:88px;height:88px;flex:none;border-radius:50%;object-fit:cover}
+.resume-name{font:800 31px Manrope,sans-serif;letter-spacing:-1.3px;line-height:1.15;margin:0 0 5px;color:#24283a}
+.resume-role{font-size:13px;color:#6a6e83;font-weight:600;margin:0 0 9px}
+.resume-contact{display:flex;flex-wrap:wrap;gap:5px 13px;color:#7b7e8f;font-size:9px}
+.resume-section{margin:0 0 18px;break-inside:avoid}
+.resume-section h3{font:800 11px Manrope,sans-serif;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 9px;color:#565b70;padding-bottom:5px;border-bottom:1px solid #e8e9ef}
+.resume-section p{margin:0;color:#5e6273;white-space:pre-line}
+.resume-item{margin:0 0 11px;break-inside:avoid}
+.resume-item-top{display:flex;justify-content:space-between;gap:12px;font-weight:700;color:#34384b}
+.resume-item-sub{color:#85889a;font-size:9px;margin:2px 0 4px}
+.resume-item-desc{color:#626679;white-space:pre-line}
+.resume-skills{display:flex;flex-wrap:wrap;gap:6px}
+.resume-skill{padding:4px 8px;border-radius:5px;background:#f0efff;color:#5c55c7;font-size:9px;font-weight:600}
+.resume-columns{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+
+/* ========== MODERN TEMPLATE FIXES ========== */
+.template-modern {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 245px 1fr;
+  align-items: stretch;
+}
+.template-modern .modern-side {
+  background: #27334d;
+  color: white;
+  padding: 48px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.template-modern .modern-main {
+  padding: 50px 35px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.template-modern .resume-name {
+  font-size: 26px;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.template-modern .resume-role,
+.template-modern .resume-contact,
+.template-modern .modern-side p {
+  color: #d2d9e8;
+  word-break: break-word;
+}
+.template-modern .resume-section h3 {
+  color: inherit;
+  border-color: #dce0eb55;
+}
+.template-modern .modern-side .resume-section h3 {
+  color: #fff;
+  margin-top: 10px;
+}
+.template-modern .modern-main .resume-section h3 {
+  color: #37415a;
+}
+.template-modern .resume-skill {
+  background: #ffffff1c;
+  color: #fff;
+}
+.template-modern .resume-photo {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #ffffff45;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.template-modern .resume-header {
+  display: block;
+  border: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.template-modern .resume-item-top {
+  color: #30384b;
+}
+
+/* Force long links to wrap safely in all templates */
+.resume-page a, 
+.resume-page p, 
+.resume-contact span {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.template-corporate .resume-name{color:#173b61}
+.template-corporate .resume-section h3{color:#174c78;border-bottom:2px solid #d4e2ef}
+.template-corporate .resume-role{color:#2876a6}
+.template-creative{border-top:12px solid #e58b65}
+.template-creative .resume-name{color:#bd654b}
+.template-creative .resume-section h3{color:#bd654b;border-color:#f1d9d0}
+.template-creative .resume-skill{background:#fff0e9;color:#ad5e47}
+.template-ats{font-family:Arial,sans-serif;padding:52px 60px}
+.template-ats .resume-name{font-family:Arial,sans-serif;font-size:27px;letter-spacing:0}
+.template-ats .resume-header{display:block;text-align:center}
+.template-ats .resume-contact{justify-content:center}
+.template-ats .resume-photo{display:none}
+.template-ats .resume-section h3{font-family:Arial,sans-serif;border-bottom:1px solid #333;color:#222}
+.template-ats .resume-skill{background:none;padding:0;color:#333}
+.template-ats .resume-skill:after{content:" •";padding:0 5px}
+.template-executive{font-family:Georgia,serif;padding:62px 66px}
+.template-executive .resume-name{font:700 34px "Playfair Display",Georgia,serif;letter-spacing:-.5px}
+.template-executive .resume-role{font-family:"DM Sans",sans-serif;letter-spacing:1.5px;text-transform:uppercase;font-size:10px}
+.template-executive .resume-section h3{font-family:Georgia,serif;font-size:12px;letter-spacing:1.5px;color:#8b7148;border-color:#d9cdb8}
+.template-executive .resume-section p,.template-executive .resume-item-desc{font-family:Georgia,serif;font-size:11px}
+.template-executive .resume-skill{background:#f3efe8;color:#786444}
